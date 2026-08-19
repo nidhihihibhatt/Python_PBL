@@ -1,0 +1,81 @@
+2026-08-19 21:35:36,413 [INFO] academiq.train: ============================================================
+2026-08-19 21:35:36,414 [INFO] academiq.train: STEP 1: Loading and validating data
+2026-08-19 21:35:36,414 [INFO] src.data.loader: Loading data from D:\AI ML PBL\academiq\data\raw\StudentPerformanceFactors.csv
+2026-08-19 21:35:36,440 [INFO] src.data.loader: Loaded 6607 rows × 20 columns
+2026-08-19 21:35:36,456 [INFO] src.data.loader: Validation complete: PASSED
+2026-08-19 21:35:36,456 [INFO] academiq.train: ============================================================
+2026-08-19 21:35:36,457 [INFO] academiq.train: STEP 2: Preparing data and splitting
+2026-08-19 21:35:36,459 [INFO] src.models.train: Data prepared: X=(6607, 19), y_reg=(6607,), At_Risk distribution: {0: 5155, 1: 1452}
+2026-08-19 21:35:36,470 [INFO] academiq.train: ============================================================
+2026-08-19 21:35:36,471 [INFO] academiq.train: STEP 3: Ablation study — Feature engineering impact
+2026-08-19 21:35:36,471 [INFO] src.preprocessing.pipeline: Built pipeline: preprocessor -> model
+2026-08-19 21:35:39,059 [INFO] src.preprocessing.pipeline: Built pipeline: preprocessor -> feature_engineer -> model
+2026-08-19 21:35:40,277 [INFO] academiq.train: Ablation: Baseline MAE=0.8379, Engineered MAE=0.8379
+2026-08-19 21:35:40,277 [INFO] academiq.train: ============================================================
+2026-08-19 21:35:40,278 [INFO] academiq.train: STEP 4: Regression model comparison
+2026-08-19 21:35:40,286 [INFO] src.models.train: Training regression model: DummyRegressor
+2026-08-19 21:35:40,286 [INFO] src.preprocessing.pipeline: Built pipeline: preprocessor -> model
+2026-08-19 21:35:40,885 [INFO] src.models.train:   DummyRegressor: CV MAE=2.8226, Test MAE=2.9407, Test R²=-0.0013
+2026-08-19 21:35:40,885 [INFO] src.models.train: Training regression model: Ridge
+2026-08-19 21:35:40,886 [INFO] src.preprocessing.pipeline: Built pipeline: preprocessor -> scaler -> model
+2026-08-19 21:35:46,958 [INFO] src.models.train:   Ridge: CV MAE=0.4767, Test MAE=0.5218, Test R²=0.6898
+2026-08-19 21:35:46,958 [INFO] src.models.train: Training regression model: Lasso
+2026-08-19 21:35:46,959 [INFO] src.preprocessing.pipeline: Built pipeline: preprocessor -> scaler -> model
+2026-08-19 21:35:49,990 [INFO] src.models.train:   Lasso: CV MAE=0.4769, Test MAE=0.5219, Test R²=0.6897
+2026-08-19 21:35:49,990 [INFO] src.models.train: Training regression model: RandomForest
+2026-08-19 21:35:49,991 [INFO] src.preprocessing.pipeline: Built pipeline: preprocessor -> model
+2026-08-19 21:35:58,656 [INFO] src.models.train:   RandomForest: CV MAE=1.1194, Test MAE=1.1498, Test R²=0.6104
+2026-08-19 21:35:58,656 [INFO] src.models.train: Training regression model: HistGBM
+2026-08-19 21:35:58,656 [INFO] src.preprocessing.pipeline: Built pipeline: preprocessor -> model
+2026-08-19 21:36:01,443 [INFO] src.models.train:   HistGBM: CV MAE=0.8379, Test MAE=0.8754, Test R²=0.6592
+2026-08-19 21:36:01,448 [INFO] src.models.train: Model saved: D:\AI ML PBL\academiq\models\regression_pipeline.joblib (0.0 MB)
+2026-08-19 21:36:01,452 [INFO] academiq.train: ============================================================
+2026-08-19 21:36:01,453 [INFO] academiq.train: STEP 5: Classification model comparison
+2026-08-19 21:36:01,467 [INFO] src.models.train: Training classification model: DummyClassifier
+2026-08-19 21:36:01,468 [INFO] src.preprocessing.pipeline: Built pipeline: preprocessor -> model
+2026-08-19 21:36:01,961 [INFO] src.models.train:   DummyClassifier: CV PR-AUC=0.2231, Test Recall=0.2509, Test F1=0.2487
+2026-08-19 21:36:01,962 [INFO] src.models.train: Training classification model: LogisticRegression
+2026-08-19 21:36:01,962 [INFO] src.preprocessing.pipeline: Built pipeline: preprocessor -> scaler -> model
+2026-08-19 21:36:02,693 [INFO] src.models.train:   LogisticRegression: CV PR-AUC=0.9837, Test Recall=0.9588, Test F1=0.9688
+2026-08-19 21:36:02,693 [INFO] src.models.train: Training classification model: RandomForest
+2026-08-19 21:36:02,694 [INFO] src.preprocessing.pipeline: Built pipeline: preprocessor -> model
+2026-08-19 21:36:04,516 [INFO] src.models.train:   RandomForest: CV PR-AUC=0.9177, Test Recall=0.6701, Test F1=0.7723
+2026-08-19 21:36:04,516 [INFO] src.models.train: Training classification model: HistGBM
+2026-08-19 21:36:04,517 [INFO] src.preprocessing.pipeline: Built pipeline: preprocessor -> model
+2026-08-19 21:36:06,263 [INFO] src.models.train:   HistGBM: CV PR-AUC=0.9481, Test Recall=0.8007, Test F1=0.8598
+2026-08-19 21:36:06,265 [INFO] academiq.train: ============================================================
+2026-08-19 21:36:06,265 [INFO] academiq.train: STEP 6: Probability Calibration
+2026-08-19 21:36:08,467 [INFO] academiq.train: Brier Score (Uncalibrated): 0.0136
+2026-08-19 21:36:08,467 [INFO] academiq.train: Brier Score (Calibrated): 0.0154
+2026-08-19 21:36:08,467 [INFO] academiq.train: Calibration rejected (did not improve Brier score).
+2026-08-19 21:36:08,470 [INFO] src.models.train: Model saved: D:\AI ML PBL\academiq\models\classification_pipeline.joblib (0.0 MB)
+2026-08-19 21:36:08,472 [INFO] academiq.train: ============================================================
+2026-08-19 21:36:08,472 [INFO] academiq.train: STEP 7: Dynamic Threshold Selection
+2026-08-19 21:36:08,770 [INFO] academiq.train: Selected optimal threshold: 0.699 (based on >=90% recall objective on CV data)
+2026-08-19 21:36:08,810 [INFO] academiq.train: ============================================================
+2026-08-19 21:36:08,811 [INFO] academiq.train: STEP 8: Prediction Intervals (Tuning for Empirical 80% Coverage)
+2026-08-19 21:36:08,811 [INFO] src.preprocessing.pipeline: Built pipeline: preprocessor -> model
+2026-08-19 21:36:08,811 [INFO] src.preprocessing.pipeline: Built pipeline: preprocessor -> model
+2026-08-19 21:36:13,584 [INFO] academiq.train: Quantile pair (0.10, 0.90): Empirical CV Coverage = 68.55%
+2026-08-19 21:36:13,585 [INFO] src.preprocessing.pipeline: Built pipeline: preprocessor -> model
+2026-08-19 21:36:13,585 [INFO] src.preprocessing.pipeline: Built pipeline: preprocessor -> model
+2026-08-19 21:36:18,151 [INFO] academiq.train: Quantile pair (0.05, 0.95): Empirical CV Coverage = 81.53%
+2026-08-19 21:36:18,151 [INFO] src.preprocessing.pipeline: Built pipeline: preprocessor -> model
+2026-08-19 21:36:18,151 [INFO] src.preprocessing.pipeline: Built pipeline: preprocessor -> model
+2026-08-19 21:36:22,952 [INFO] academiq.train: Quantile pair (0.02, 0.98): Empirical CV Coverage = 89.25%
+2026-08-19 21:36:22,952 [INFO] academiq.train: Selected quantiles (0.05, 0.95) with CV coverage 81.53%
+2026-08-19 21:36:22,952 [INFO] src.preprocessing.pipeline: Built pipeline: preprocessor -> model
+2026-08-19 21:36:22,952 [INFO] src.preprocessing.pipeline: Built pipeline: preprocessor -> model
+2026-08-19 21:36:23,925 [INFO] src.models.train: Model saved: D:\AI ML PBL\academiq\models\quantile_lo_pipeline.joblib (0.4 MB)
+2026-08-19 21:36:23,937 [INFO] src.models.train: Model saved: D:\AI ML PBL\academiq\models\quantile_hi_pipeline.joblib (0.4 MB)
+2026-08-19 21:36:23,977 [INFO] academiq.train: ============================================================
+2026-08-19 21:36:23,977 [INFO] academiq.train: STEP 9: SHAP explainability
+2026-08-19 21:36:23,982 [INFO] src.explainability.shap_explainer: SHAP background saved: D:\AI ML PBL\academiq\models\shap_background.joblib
+2026-08-19 21:36:23,996 [INFO] src.explainability.shap_explainer: Using LinearExplainer for Ridge
+2026-08-19 21:36:24,002 [WARNING] shap: Background dataset has 200 samples but max_samples=100. Subsampling to 100 samples for SHAP value computation. To use all samples, set max_samples=200 when initializing the masker.
+2026-08-19 21:36:24,033 [INFO] academiq.train: ============================================================
+2026-08-19 21:36:24,033 [INFO] academiq.train: STEP 10: Fairness analysis
+2026-08-19 21:36:24,096 [INFO] src.models.train: Metrics saved: D:\AI ML PBL\academiq\reports\metrics.json
+2026-08-19 21:36:24,097 [INFO] src.models.train: Metrics saved: D:\AI ML PBL\academiq\reports\model_metadata.json
+2026-08-19 21:36:24,097 [INFO] academiq.train: ============================================================
+2026-08-19 21:36:24,097 [INFO] academiq.train: TRAINING COMPLETE in 47.7 seconds
