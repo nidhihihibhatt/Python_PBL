@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.eggs/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Model artifacts (reproducible via train.py)
+models/*.joblib
+models/*.pkl
+
+# Processed data (reproducible via pipeline)
+data/processed/*.csv
+data/processed/*.parquet
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Distribution
+dist/
+build/
+
+# Environment files
+.env
+.env.local

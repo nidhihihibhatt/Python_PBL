@@ -1,0 +1,97 @@
+# ==================================================
+# AcademIQ — Recommendation Rules
+# ==================================================
+# Each rule triggers ONLY when:
+#   1. The feature condition is met, AND
+#   2. The SHAP value confirms the feature negatively impacts the prediction
+#
+# This prevents generic advice disconnected from what the model sees.
+
+rules:
+  - id: R01
+    feature: Attendance
+    operator: "<"
+    threshold: 75
+    expected_shap_direction: negative
+    priority: high
+    category: "Academic Engagement"
+    message: >
+      Attendance is below the cohort average and is negatively associated
+      with the model's prediction. Consider reviewing attendance consistency.
+
+  - id: R02
+    feature: Hours_Studied
+    operator: "<"
+    threshold: 15
+    expected_shap_direction: negative
+    priority: high
+    category: "Study Habits"
+    message: >
+      Study hours are below the cohort average (~20 hrs/week). A structured
+      study schedule may support better academic outcomes.
+
+  - id: R03
+    feature: Previous_Scores
+    operator: "<"
+    threshold: 65
+    expected_shap_direction: negative
+    priority: medium
+    category: "Academic History"
+    message: >
+      Previous academic performance is below average. Targeted review of
+      foundational material may be beneficial.
+
+  - id: R04
+    feature: Tutoring_Sessions
+    operator: "=="
+    threshold: 0
+    expected_shap_direction: negative
+    priority: medium
+    category: "Academic Support"
+    message: >
+      No tutoring sessions recorded. Additional academic support resources
+      may be worth considering.
+
+  - id: R05
+    feature: Parental_Involvement
+    operator: "=="
+    threshold: 0  # "Low" after ordinal encoding
+    expected_shap_direction: negative
+    priority: medium
+    category: "Support System"
+    message: >
+      Low parental involvement is associated with lower predictions in this
+      model. Increased parent-teacher communication may be helpful.
+
+  - id: R06
+    feature: Access_to_Resources
+    operator: "=="
+    threshold: 0  # "Low" after ordinal encoding
+    expected_shap_direction: negative
+    priority: medium
+    category: "Resources"
+    message: >
+      Limited access to academic resources is negatively associated with
+      performance. Consider whether additional materials or tools are available.
+
+  - id: R07
+    feature: Motivation_Level
+    operator: "=="
+    threshold: 0  # "Low" after ordinal encoding
+    expected_shap_direction: negative
+    priority: low
+    category: "Engagement"
+    message: >
+      Low motivation is associated with lower predictions. Engagement
+      strategies such as goal-setting or peer study groups may be worth exploring.
+
+  - id: R08
+    feature: Sleep_Hours
+    operator: "<"
+    threshold: 6
+    expected_shap_direction: negative
+    priority: low
+    category: "Wellbeing"
+    message: >
+      Sleep hours are below recommended levels. Adequate sleep is generally
+      associated with better academic outcomes.

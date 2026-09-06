@@ -1,0 +1,107 @@
+# ==================================================
+# AcademIQ — Model Configuration
+# ==================================================
+
+random_seed: 42
+test_size: 0.2
+cv_folds: 5
+
+# --- Target ---
+target_column: "Exam_Score"
+risk_threshold: 65  # Score below this = At_Risk. P25, educationally recognisable.
+
+# --- Risk Display Categories (presentation layer) ---
+risk_categories:
+  high_risk_min_prob: 0.7
+  moderate_risk_min_prob: 0.3
+
+# --- Feature Definitions ---
+numeric_features:
+  - Hours_Studied
+  - Attendance
+  - Sleep_Hours
+  - Previous_Scores
+  - Tutoring_Sessions
+  - Physical_Activity
+
+ordinal_features:
+  Parental_Involvement: ["Low", "Medium", "High"]
+  Access_to_Resources: ["Low", "Medium", "High"]
+  Motivation_Level: ["Low", "Medium", "High"]
+  Teacher_Quality: ["Low", "Medium", "High"]
+  Family_Income: ["Low", "Medium", "High"]
+  Parental_Education_Level: ["High School", "College", "Postgraduate"]
+  Distance_from_Home: ["Near", "Moderate", "Far"]
+  Peer_Influence: ["Negative", "Neutral", "Positive"]
+
+nominal_features:
+  - Gender
+  - Extracurricular_Activities
+  - Internet_Access
+  - School_Type
+  - Learning_Disabilities
+
+# --- Feature Engineering ---
+engineered_features:
+  Study_Effort:
+    formula: "Hours_Studied * Attendance / 100"
+    rationale: "Captures interaction between study time and class presence"
+  Support_Index:
+    formula: "(Parental_Involvement + Access_to_Resources + norm(Tutoring_Sessions)) / 3"
+    rationale: "Aggregates external support factors"
+  Engagement:
+    formula: "Motivation_Level + Extracurricular_Activities"
+    rationale: "Combines intrinsic motivation with activity engagement"
+
+# --- Regression Models ---
+regression_models:
+  DummyRegressor:
+    params: {}
+  Ridge:
+    params:
+      model__alpha: [0.01, 0.1, 1.0, 10.0, 100.0]
+  Lasso:
+    params:
+      model__alpha: [0.001, 0.01, 0.1, 1.0]
+  RandomForestRegressor:
+    params:
+      model__n_estimators: [100, 200]
+      model__max_depth: [null, 10, 20]
+      model__min_samples_leaf: [1, 5, 10]
+  HistGradientBoostingRegressor:
+    params:
+      model__learning_rate: [0.01, 0.05, 0.1]
+      model__max_depth: [3, 5, 7]
+      model__max_iter: [100, 200, 500]
+
+# --- Classification Models ---
+classification_models:
+  DummyClassifier:
+    params: {}
+  LogisticRegression:
+    params:
+      model__C: [0.01, 0.1, 1.0, 10.0]
+  RandomForestClassifier:
+    params:
+      model__n_estimators: [100, 200]
+      model__max_depth: [null, 10, 20]
+  HistGradientBoostingClassifier:
+    params:
+      model__learning_rate: [0.01, 0.05, 0.1]
+      model__max_depth: [3, 5, 7]
+
+# --- Quantile Regression (Uncertainty) ---
+uncertainty:
+  lower_quantile: 0.1
+  upper_quantile: 0.9
+  # Produces 80% prediction interval
+
+# --- Model Artifacts ---
+artifacts:
+  regression_pipeline: "models/regression_pipeline.joblib"
+  classification_pipeline: "models/classification_pipeline.joblib"
+  quantile_lo_pipeline: "models/quantile_lo_pipeline.joblib"
+  quantile_hi_pipeline: "models/quantile_hi_pipeline.joblib"
+  shap_background: "models/shap_background.joblib"
+  metrics: "reports/metrics.json"
+  model_metadata: "reports/model_metadata.json"

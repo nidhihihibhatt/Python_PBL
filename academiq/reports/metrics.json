@@ -1,0 +1,457 @@
+{
+  "ablation_study": {
+    "set_a_baseline": {
+      "cv_mae": 0.8379
+    },
+    "set_b_engineered": {
+      "cv_mae": 0.8379
+    },
+    "improvement": 0.0,
+    "decision": "DROP engineered features"
+  },
+  "regression": {
+    "best_model": "Ridge",
+    "results": [
+      {
+        "Model": "Ridge",
+        "CV_MAE": 0.4767,
+        "CV_MAE_std": 0.0397,
+        "CV_RMSE": 1.9555,
+        "CV_RMSE_std": 0.3019,
+        "CV_R2": 0.7392,
+        "CV_R2_std": 0.0578,
+        "Test_MAE": 0.5218,
+        "Test_RMSE": 2.2665,
+        "Test_R2": 0.6898,
+        "Train_Time_s": 5.26,
+        "Best_Params": "{'model__alpha': 0.01}"
+      },
+      {
+        "Model": "Lasso",
+        "CV_MAE": 0.4769,
+        "CV_MAE_std": 0.0398,
+        "CV_RMSE": 1.9555,
+        "CV_RMSE_std": 0.302,
+        "CV_R2": 0.7392,
+        "CV_R2_std": 0.0579,
+        "Test_MAE": 0.5219,
+        "Test_RMSE": 2.2666,
+        "Test_R2": 0.6897,
+        "Train_Time_s": 1.84,
+        "Best_Params": "{'model__alpha': 0.001}"
+      },
+      {
+        "Model": "HistGBM",
+        "CV_MAE": 0.8379,
+        "CV_MAE_std": 0.0458,
+        "CV_RMSE": 2.1134,
+        "CV_RMSE_std": 0.2841,
+        "CV_R2": 0.6963,
+        "CV_R2_std": 0.0555,
+        "Test_MAE": 0.8754,
+        "Test_RMSE": 2.3756,
+        "Test_R2": 0.6592,
+        "Train_Time_s": 1.53,
+        "Best_Params": "{}"
+      },
+      {
+        "Model": "RandomForest",
+        "CV_MAE": 1.1194,
+        "CV_MAE_std": 0.0279,
+        "CV_RMSE": 2.2861,
+        "CV_RMSE_std": 0.2622,
+        "CV_R2": 0.6449,
+        "CV_R2_std": 0.0533,
+        "Test_MAE": 1.1498,
+        "Test_RMSE": 2.54,
+        "Test_R2": 0.6104,
+        "Train_Time_s": 7.04,
+        "Best_Params": "{}"
+      },
+      {
+        "Model": "DummyRegressor",
+        "CV_MAE": 2.8226,
+        "CV_MAE_std": 0.0707,
+        "CV_RMSE": 3.84,
+        "CV_RMSE_std": 0.1789,
+        "CV_R2": -0.0009,
+        "CV_R2_std": 0.0008,
+        "Test_MAE": 2.9407,
+        "Test_RMSE": 4.072,
+        "Test_R2": -0.0013,
+        "Train_Time_s": 0.31,
+        "Best_Params": "{}"
+      }
+    ]
+  },
+  "calibration": {
+    "applied": false,
+    "brier_uncalibrated": 0.013616783787342213,
+    "brier_calibrated": 0.0154055591985755
+  },
+  "classification": {
+    "best_model": "LogisticRegression",
+    "results": [
+      {
+        "Model": "LogisticRegression",
+        "CV_PR_AUC": 0.9837,
+        "CV_PR_AUC_std": 0.0148,
+        "CV_F1": 0.9627,
+        "CV_Recall": 0.9552,
+        "CV_Precision": 0.9706,
+        "Test_Accuracy": 0.9864,
+        "Test_Precision": 0.9789,
+        "Test_Recall": 0.9588,
+        "Test_F1": 0.9688,
+        "Test_ROC_AUC": 0.9982,
+        "Test_PR_AUC": 0.9861,
+        "Train_Time_s": 0.34,
+        "Best_Params": "{'model__C': 10.0}"
+      },
+      {
+        "Model": "HistGBM",
+        "CV_PR_AUC": 0.9481,
+        "CV_PR_AUC_std": 0.0216,
+        "CV_F1": 0.8719,
+        "CV_Recall": 0.8355,
+        "CV_Precision": 0.9118,
+        "Test_Accuracy": 0.9425,
+        "Test_Precision": 0.9283,
+        "Test_Recall": 0.8007,
+        "Test_F1": 0.8598,
+        "Test_ROC_AUC": 0.9837,
+        "Test_PR_AUC": 0.9479,
+        "Train_Time_s": 0.27,
+        "Best_Params": "{}"
+      },
+      {
+        "Model": "RandomForest",
+        "CV_PR_AUC": 0.9177,
+        "CV_PR_AUC_std": 0.0206,
+        "CV_F1": 0.7895,
+        "CV_Recall": 0.6882,
+        "CV_Precision": 0.9269,
+        "Test_Accuracy": 0.913,
+        "Test_Precision": 0.9112,
+        "Test_Recall": 0.6701,
+        "Test_F1": 0.7723,
+        "Test_ROC_AUC": 0.9726,
+        "Test_PR_AUC": 0.9114,
+        "Train_Time_s": 0.25,
+        "Best_Params": "{}"
+      },
+      {
+        "Model": "DummyClassifier",
+        "CV_PR_AUC": 0.2231,
+        "CV_PR_AUC_std": 0.0017,
+        "CV_F1": 0.2358,
+        "CV_Recall": 0.2377,
+        "CV_Precision": 0.2339,
+        "Test_Accuracy": 0.6664,
+        "Test_Precision": 0.2466,
+        "Test_Recall": 0.2509,
+        "Test_F1": 0.2487,
+        "Test_ROC_AUC": 0.5173,
+        "Test_PR_AUC": 0.2268,
+        "Train_Time_s": 0.08,
+        "Best_Params": "{}"
+      }
+    ],
+    "selected_threshold": 0.6988452729966935
+  },
+  "regression_vs_classifier": {
+    "approach_a_regression_derived": {
+      "accuracy": 0.969,
+      "precision": 0.8788,
+      "recall": 0.9966,
+      "f1": 0.934,
+      "confusion_matrix": [
+        [
+          991,
+          40
+        ],
+        [
+          1,
+          290
+        ]
+      ]
+    },
+    "approach_b_dedicated_classifier": {
+      "accuracy": 0.9735,
+      "precision": 0.9885,
+      "recall": 0.89,
+      "f1": 0.9367,
+      "confusion_matrix": [
+        [
+          1028,
+          3
+        ],
+        [
+          32,
+          259
+        ]
+      ],
+      "roc_auc": 0.9982,
+      "pr_auc": 0.9861,
+      "brier_score": 0.0119
+    }
+  },
+  "prediction_intervals": {
+    "nominal_quantiles": [
+      0.05,
+      0.95
+    ],
+    "empirical_cv_coverage": 0.8153,
+    "empirical_test_coverage": 0.8026,
+    "avg_interval_width": 3.92
+  },
+  "shap_feature_importance": {
+    "Attendance": 1.9548,
+    "Hours_Studied": 1.3974,
+    "Previous_Scores": 0.5881,
+    "Access_to_Resources": 0.5776,
+    "Tutoring_Sessions": 0.5315,
+    "Parental_Involvement": 0.4834,
+    "Family_Income": 0.3368,
+    "Parental_Education_Level": 0.3285,
+    "Peer_Influence": 0.2958,
+    "Motivation_Level": 0.2929
+  },
+  "fairness": {
+    "regression": {
+      "Gender": {
+        "group_name": "Gender",
+        "overall": {
+          "mae": 0.5218,
+          "rmse": 2.2665,
+          "r2": 0.6898,
+          "max_error": 29.4433,
+          "median_ae": 0.2745
+        },
+        "subgroups": {
+          "Female": {
+            "mae": 0.46,
+            "rmse": 1.9012,
+            "r2": 0.7721,
+            "max_error": 28.3191,
+            "median_ae": 0.2833,
+            "n": 545,
+            "mean_residual": -0.08
+          },
+          "Male": {
+            "mae": 0.5651,
+            "rmse": 2.491,
+            "r2": 0.6349,
+            "max_error": 29.4433,
+            "median_ae": 0.2718,
+            "n": 777,
+            "mean_residual": 0.1652
+          }
+        },
+        "alerts": []
+      },
+      "Family_Income": {
+        "group_name": "Family_Income",
+        "overall": {
+          "mae": 0.5218,
+          "rmse": 2.2665,
+          "r2": 0.6898,
+          "max_error": 29.4433,
+          "median_ae": 0.2745
+        },
+        "subgroups": {
+          "High": {
+            "mae": 0.6052,
+            "rmse": 2.503,
+            "r2": 0.6747,
+            "max_error": 22.3521,
+            "median_ae": 0.2542,
+            "n": 225,
+            "mean_residual": 0.0538
+          },
+          "Low": {
+            "mae": 0.517,
+            "rmse": 2.25,
+            "r2": 0.6837,
+            "max_error": 29.4433,
+            "median_ae": 0.291,
+            "n": 525,
+            "mean_residual": 0.0758
+          },
+          "Medium": {
+            "mae": 0.4933,
+            "rmse": 2.1822,
+            "r2": 0.6996,
+            "max_error": 27.3401,
+            "median_ae": 0.265,
+            "n": 572,
+            "mean_residual": 0.0575
+          }
+        },
+        "alerts": []
+      }
+    },
+    "classification": {
+      "Gender": {
+        "group_name": "Gender",
+        "overall": {
+          "accuracy": 0.9735,
+          "precision": 0.9885,
+          "recall": 0.89,
+          "f1": 0.9367,
+          "confusion_matrix": [
+            [
+              1028,
+              3
+            ],
+            [
+              32,
+              259
+            ]
+          ],
+          "roc_auc": 0.9982,
+          "pr_auc": 0.9861,
+          "brier_score": 0.0119
+        },
+        "subgroups": {
+          "Female": {
+            "accuracy": 0.9725,
+            "precision": 1.0,
+            "recall": 0.8944,
+            "f1": 0.9442,
+            "confusion_matrix": [
+              [
+                403,
+                0
+              ],
+              [
+                15,
+                127
+              ]
+            ],
+            "roc_auc": 0.9997,
+            "pr_auc": 0.9991,
+            "brier_score": 0.0113,
+            "n": 545,
+            "fpr": 0.0,
+            "fnr": 0.1056
+          },
+          "Male": {
+            "accuracy": 0.9743,
+            "precision": 0.9778,
+            "recall": 0.8859,
+            "f1": 0.9296,
+            "confusion_matrix": [
+              [
+                625,
+                3
+              ],
+              [
+                17,
+                132
+              ]
+            ],
+            "roc_auc": 0.9974,
+            "pr_auc": 0.9751,
+            "brier_score": 0.0123,
+            "n": 777,
+            "fpr": 0.0048,
+            "fnr": 0.1141
+          }
+        },
+        "alerts": []
+      },
+      "Family_Income": {
+        "group_name": "Family_Income",
+        "overall": {
+          "accuracy": 0.9735,
+          "precision": 0.9885,
+          "recall": 0.89,
+          "f1": 0.9367,
+          "confusion_matrix": [
+            [
+              1028,
+              3
+            ],
+            [
+              32,
+              259
+            ]
+          ],
+          "roc_auc": 0.9982,
+          "pr_auc": 0.9861,
+          "brier_score": 0.0119
+        },
+        "subgroups": {
+          "High": {
+            "accuracy": 0.9733,
+            "precision": 0.975,
+            "recall": 0.8864,
+            "f1": 0.9286,
+            "confusion_matrix": [
+              [
+                180,
+                1
+              ],
+              [
+                5,
+                39
+              ]
+            ],
+            "roc_auc": 0.9935,
+            "pr_auc": 0.9302,
+            "brier_score": 0.0179,
+            "n": 225,
+            "fpr": 0.0055,
+            "fnr": 0.1136
+          },
+          "Low": {
+            "accuracy": 0.9733,
+            "precision": 0.9909,
+            "recall": 0.8934,
+            "f1": 0.9397,
+            "confusion_matrix": [
+              [
+                402,
+                1
+              ],
+              [
+                13,
+                109
+              ]
+            ],
+            "roc_auc": 0.9992,
+            "pr_auc": 0.997,
+            "brier_score": 0.0108,
+            "n": 525,
+            "fpr": 0.0025,
+            "fnr": 0.1066
+          },
+          "Medium": {
+            "accuracy": 0.9738,
+            "precision": 0.9911,
+            "recall": 0.888,
+            "f1": 0.9367,
+            "confusion_matrix": [
+              [
+                446,
+                1
+              ],
+              [
+                14,
+                111
+              ]
+            ],
+            "roc_auc": 0.9993,
+            "pr_auc": 0.9976,
+            "brier_score": 0.0106,
+            "n": 572,
+            "fpr": 0.0022,
+            "fnr": 0.112
+          }
+        },
+        "alerts": []
+      }
+    }
+  }
+}

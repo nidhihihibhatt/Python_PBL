@@ -1,0 +1,33 @@
+# ==================================================
+# AcademIQ — Application Configuration
+# ==================================================
+
+app:
+  title: "AcademIQ"
+  subtitle: "Explainable Student Academic Intelligence & Early Warning System"
+  icon: "🎓"
+  layout: "wide"
+
+# --- Dashboard Pages ---
+pages:
+  - name: "Overview"
+    icon: "📊"
+  - name: "Student Analysis"
+    icon: "🧑‍🎓"
+  - name: "Risk & Early Warning"
+    icon: "⚠️"
+  - name: "Model & Methodology"
+    icon: "🔬"
+
+# --- Display Settings ---
+display:
+  score_decimals: 1
+  probability_decimals: 1
+  max_recommendations: 5
+  max_contributing_factors: 5
+
+# --- Causal Disclaimer ---
+causal_disclaimer: >
+  ⚠️ These explanations show which factors are associated with the model's
+  prediction, not what caused the outcome. The model identifies statistical
+  patterns, not causal mechanisms. Correlation ≠ causation.

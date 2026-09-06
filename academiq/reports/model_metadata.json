@@ -1,0 +1,13 @@
+{
+  "model_name": "Ridge",
+  "version": "1.1.0",
+  "trained_at": "2026-08-19T16:06:24.097085+00:00",
+  "random_seed": 42,
+  "risk_threshold": 65,
+  "feature_set": "baseline",
+  "metrics_summary": {
+    "regression_test_mae": 0.5218,
+    "classification_test_recall": 0.89,
+    "classification_threshold": 0.6988452729966935
+  }
+}
